@@ -1,0 +1,7 @@
+{
+  "name": "mobile-lab-3",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
