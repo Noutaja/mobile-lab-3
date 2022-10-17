@@ -1,6 +1,7 @@
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonList, IonPage, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonPage, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
 import { useState } from 'react';
 import './Movies.css';
+import { bookOutline } from 'ionicons/icons';
 
 type MovieItem = {
 	Title: string;
@@ -18,10 +19,10 @@ const SearchResults: React.FC<{movielist: MovieItem[]}> = (props) => {
 				{props.movielist.map((item) => (
 					<IonItem key={item.imdbID} className="movie-item">
 						<IonThumbnail slot="start">
-							<img src={item.Poster}></img>
+							<img alt="Movie poster" src={item.Poster}></img>
 						</IonThumbnail>
 						{item.Title}
-						<IonButton slot="end" routerLink={"/moviedetails/" + item.imdbID}>DETAILS</IonButton>
+						<IonButton slot="end" routerLink={"/moviedetails/" + item.imdbID}><IonIcon icon={bookOutline}></IonIcon></IonButton>
 					</IonItem>
 				))}
 			</IonList>
@@ -41,7 +42,6 @@ const Movies: React.FC = () => {
 		.then(res => res.json())
 		.then(data => {
 			setMovielist(data.Search);
-			console.log(movielist)
 		});
 	}
 
